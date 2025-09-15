@@ -2,7 +2,7 @@
 """
 Iterative multi-mutation inference (v4, verbose logging + run summaries)
 -----------------------------------------------------------------------
-- 匹配 train_v4.py 的 tokenizer/遮罩约定
+- 匹配 train_v5.py 的 tokenizer/遮罩约定
 - 迭代式多突变：一次只改一个位点，直到改完
 - 两套接口：
   A) 传入序列与位点（单条/批量/每条K个变体）
