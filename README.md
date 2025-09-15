@@ -65,10 +65,12 @@ for si, variants in enumerate(outs):
 
 #### Initialization (`IterativeMutator`)
 - **`weights_path`** — Path to the pretrained checkpoint file (e.g., `best.pt`).
-- **`local_model_dir`** — Local directory for the base protein language model used internally (e.g., ESM-2). Point this to a folder that already contains the required model files.
+- **`local_model_dir`** — Local directory containing the **ESM-2-650M** model files.  
+  The model can be downloaded from [Hugging Face](https://huggingface.co/facebook/esm2_t33_650M_UR50D), and this path should point to the folder where the files are stored.
 
 #### `run_iterative_for_many(...)`
-- **`seqs`** — List of amino-acid sequences (uppercase, single-letter codes). Each item is one chain string.
+- **`seqs`** — A list of antibody amino-acid sequences (uppercase single-letter codes, length 129).  
+  Each item corresponds to one sequence string.
 - **`positions_list`** — List of integer lists (one per sequence), containing **0-based indices** into the corresponding string in `seqs[i]`.
   - Example: index `0` is the first residue of the sequence string.
   - Ensure every index is valid for its corresponding sequence.
