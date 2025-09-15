@@ -59,7 +59,7 @@ for si, variants in enumerate(outs):
         order = [ (h["picked"]["pos"], f'{h["picked"]["prev_char"]}->{h["picked"]["new_char"]}') for h in hist if h["picked"]["changed"] ]
         print(f"  - var#{vi+1}: changed={changed}, order={order}")
         # mut_seq is the final mutated sequence
-```python
+```
 
 ### Argument Reference
 
