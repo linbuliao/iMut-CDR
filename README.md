@@ -1,6 +1,6 @@
 # iMut-CDR
 
-**iMut-CDR** (Iterative Mutagenesis of Antibody CDRs) is a computational framework that frames antibody complementarity-determining region (CDR) optimization as a masked-residue recovery problem.  
+**iMut-CDR** (Iterative Mutator of Antibody CDRs) is a computational framework that frames antibody complementarity-determining region (CDR) optimization as a masked-residue recovery problem.  
 By combining cross-entropy learning with contrastive alignment and token-level self-distillation, iMut-CDR captures both local residue context and global sequence-level constraints. At inference time, it applies mutations iteratively—one site at a time—so that proposed substitutions naturally respect co-evolutionary dependencies among positions.
 
 ## Pretrained Model
