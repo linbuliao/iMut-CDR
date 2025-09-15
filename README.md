@@ -26,6 +26,8 @@ You can set up the environment using **Conda** (via `environment.yml`) or plain 
    ```bash
    conda env create -f environment.yml
    conda activate imut-cdr
+   ```
+
 2. GPU users: ensure your CUDA driver is compatible with the `pytorch-cuda` version in `environment.yml`.  
    CPU-only users: remove the `pytorch-cuda` line in `environment.yml` and/or install CPU builds per PyTorch docs.
 
@@ -35,20 +37,72 @@ You can set up the environment using **Conda** (via `environment.yml`) or plain 
    ```bash
    python -m venv .venv
    source .venv/bin/activate        # Windows: .venv\Scripts\activate
+   ```
+
 2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 3. GPU users: install a torch build that matches your CUDA version (see official PyTorch docs).  
    CPU-only users, for example:
-```bash
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-```
+   ```bash
+   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+   ```
 
 > **Model files**: Download **ESM-2-650M** from Hugging Face  
 > [facebook/esm2_t33_650M_UR50D](https://huggingface.co/facebook/esm2_t33_650M_UR50D)  
 > and set `local_model_dir` to the folder where those files are stored.
 
+---
+
+## Quick Start
+
+Follow the shortest path to run iMut-CDR with the pretrained checkpoint.
+
+1. **Create the environment**
+   - **Conda**:
+     ```bash
+     conda env create -f environment.yml
+     conda activate imut-cdr
+     ```
+   - **pip**:
+     ```bash
+     python -m venv .venv
+     source .venv/bin/activate        # Windows: .venv\Scripts\activate
+     pip install -r requirements.txt
+     ```
+
+2. **Prepare model files**
+   - Place **`best.pt`** (pretrained checkpoint) somewhere accessible (e.g., repo root).
+   - Download **ESM-2-650M** from Hugging Face and set `local_model_dir` to that folder:
+     ```
+     facebook/esm2_t33_650M_UR50D
+     ```
+
+3. **Edit the script (inside `mutate.py`)**
+   - Update:
+     - `weights_path="best.pt"`  (or an absolute path)
+     - `local_model_dir="/path/to/esm2_t33_650M_UR50D"`
+     - `seqs`, `positions_list`  (your sequences & 0-based positions)
+
+4. **Run**
+   ```bash
+   python mutate.py
+   ```
+
+5. **Interpret outputs**
+   - The script prints per-iteration diagnostics and the final **mutation order** for each variant.
+   - Programmatic output `outs` has shape:
+     ```
+     List[  # per input sequence
+       List[  # K variants
+         (mut_seq: str, hist: List[dict])
+       ]
+     ]
+     ```
+   - Sampling is restricted to **20 canonical amino acids**; default `aa_blacklist="C"`.  
+     To **allow cysteine**, set `aa_blacklist=""`.
 
 ## Usage
 
@@ -131,6 +185,12 @@ for si, variants in enumerate(outs):
       - `picked.changed` (bool),
       - plus optional scores/probabilities depending on configuration.
 
+## Notes on Residue Set & Blacklist
+- The model’s sampling is restricted to the **20 canonical amino acids**.  
+- By default, `aa_blacklist="C"` to avoid cysteine in mutations.  
+- If you **need to allow cysteine**, explicitly set `aa_blacklist=""`.
+
 #### How to Run
 ```bash
 python mutate.py
+```
