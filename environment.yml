@@ -7,7 +7,7 @@ channels:
 dependencies:
   - python=3.10
   - pip
-  # -------- GPU PyTorch (如需CPU-only，请看下方注释) --------
+  # -------- GPU PyTorch --------
   - pytorch>=2.2
   - pytorch-cuda=12.1        # 和你机器驱动/Toolkit匹配，常见为 12.x
   # （可选）如果你需要 torchvision 的张量/图像工具：
