@@ -19,10 +19,10 @@ It is focused on mutation and inference workflows.
 ## Usage
 
 > **Where is the example?**  
-> The code block below is located **at the end of `mutate_v5.py`**.  
+> The code block below is located **at the end of `mutate.py`**.  
 > Please **edit the variables and function calls inside the script** (e.g., `weights_path`, `local_model_dir`, `seqs`, `positions_list`) to run your own data.
 
-### External Input Example (embedded at the end of `mutate_v5.py`)
+### External Input Example (embedded at the end of `mutate.py`)
 ```python
 ##### External Input Data #######
 # 1) Initialization
@@ -98,4 +98,4 @@ for si, variants in enumerate(outs):
 
 #### How to Run
 ```bash
-python mutate_v5.py
+python mutate.py
