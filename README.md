@@ -16,6 +16,40 @@ It is focused on mutation and inference workflows.
 
 ---
 
+## Environment Setup
+
+You can set up the environment using **Conda** (via `environment.yml`) or plain **pip** (via `requirements.txt`). Choose one of the following options.
+
+### Option A — Conda (`environment.yml`)
+
+1. Create and activate the environment:
+   ```bash
+   conda env create -f environment.yml
+   conda activate imut-cdr
+2. GPU users: ensure your CUDA driver is compatible with the `pytorch-cuda` version in `environment.yml`.  
+   CPU-only users: remove the `pytorch-cuda` line in `environment.yml` and/or install CPU builds per PyTorch docs.
+
+### Option B — pip (`requirements.txt`)
+
+1. (Recommended) Use a clean virtual environment (e.g., `venv`):
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate        # Windows: .venv\Scripts\activate
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. GPU users: install a torch build that matches your CUDA version (see official PyTorch docs).  
+   CPU-only users, for example:
+```bash
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+```
+
+> **Model files**: Download **ESM-2-650M** from Hugging Face  
+> [facebook/esm2_t33_650M_UR50D](https://huggingface.co/facebook/esm2_t33_650M_UR50D)  
+> and set `local_model_dir` to the folder where those files are stored.
+
+
 ## Usage
 
 > **Where is the example?**  
@@ -33,8 +67,9 @@ mut = IterativeMutator(
 
 # 2) External multiple sequences + their mutation positions (0-based)
 seqs = [
-    "EVQLVESGGGLVQPGGSLRLSCAASGTT...YYY",
-    "QVQLVQSGAEVKKPGASVKVSCKASGGT...YYY",
+    "QSLLGTSGKTXQVSXXXXXXXXWQGTHFPYTXXXXXXXXXXXXXXXXXGFTFNNYDXXXISYDGSSTXXXARLGHYXXXXXXXXXXXXXXXXXXX",
+    "QNINKYXXXXXNTNXXXXXXXXLQHNSGWTXXXXXXXXXXXXXXXXXXGDTITAYYXXXIDPEDDSTXXXTTGVAGPYYFDYXXXXXXXXXXXXX",
+    "EDIHNGXXXXXDAKXXXXXXXXQQYYDFPLTXXXXXXXXXXXXXXXXXGFTFSNYGXXXINVNSATXXXXARRSTTVPYNWFAYXXXXXXXXXXX"
 ]
 positions_list = [
     [31, 33, 52, 57, 60, 98],  # corresponding to seqs[0]
