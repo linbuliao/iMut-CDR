@@ -30,6 +30,10 @@ from transformers import AutoTokenizer, EsmModel
 warnings.filterwarnings("ignore", category=UserWarning)
 torch.backends.cuda.matmul.allow_tf32 = True
 
+# ========== 默认路径（可在构造器传参覆盖）==========
+LOCAL_MODEL_DIR = "esm2_650m"
+WEIGHTS_PATH    = "best.pt"
+
 # ========== Device helpers ==========
 def _pick_gpu_by_nvidia_smi(min_free_mb=2048, prefer_ids=None):
     if not torch.cuda.is_available():
@@ -87,10 +91,6 @@ class autocast_cuda:
         return self.ctx.__enter__()
     def __exit__(self, exc_type, exc, tb):
         return self.ctx.__exit__(exc_type, exc, tb)
-
-# ========== 默认路径（可在构造器传参覆盖）==========
-LOCAL_MODEL_DIR = "/data/linbu/RandomMutation/models/esm2_650m"
-WEIGHTS_PATH    = "runs_esm2_fast_contrast_v5/best.pt"
 
 # ========== Model（与训练一致的必要子集）==========
 class ProteinMLMContrastModel(nn.Module):
