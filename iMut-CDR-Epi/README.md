@@ -57,8 +57,8 @@ For training and dataset preparation, see: [link pending].
 - **Conditional model (FiLM)**: `runs_cond_film_token_item_split_v1/best.pt` — checkpoint trained with antigen pocket conditioning.  
   Download: [link pending]
 - **ESM-2 (650M) weights**: local folder with model files from Hugging Face.  
-  Model card: [link pending] (`facebook/esm2_t33_650M_UR50D`)
-
+  Model card: [facebook/esm2_t33_650M_UR50D](https://huggingface.co/facebook/esm2_t33_650M_UR50D)
+  
 > Place `best.pt` somewhere accessible (e.g., repo root), and set `LOCAL_MODEL_DIR` in the script to your local ESM-2 folder.
 
 ---
@@ -216,15 +216,3 @@ For each antigen key:
 - FiLM/Graph-Transformer dimensions must match the checkpoint.
 - The sampler treats `X` as **non-mutating** sentinel positions.
 
----
-
-# Citation
-
-- Paper: [link pending]
-- Codebase: [link pending]
-
----
-
-# License
-
-[license pending]
