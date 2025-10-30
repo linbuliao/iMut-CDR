@@ -886,7 +886,7 @@ ds_outs = run_iterative_on_dataset(
 ##### External Input Data #######
 # 1) Initialization
 mut = IterativeMutator(
-    weights_path="best.pt",
+    weights_path="iMut-CDR.pt",
     local_model_dir="/data/linbu/RandomMutation/models/esm2_650m",
 )
 

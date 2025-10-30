@@ -5,9 +5,9 @@ The method formulates CDR refinement as a masked-residue recovery problem. By co
 
 ## Pretrained Model
 
-A pretrained model checkpoint (**best.pt**) is available for download:
+A pretrained model checkpoint (**iMut-CDR.pt**) is available for download:
 
-[Download best.pt](https://drive.google.com/file/d/1mLfoSNwKDw0c9Fmc1ajxK7nrHLgFSKp-/view?usp=sharing)
+[Download iMut-CDR.pt](https://huggingface.co/linbuliao/iMut-CDR/resolve/main/iMut-CDR.pt)
 
 ## Repository Scope
 

@@ -48,14 +48,13 @@ This repository provides the **inference/mutation application** for iMut-CDR-Epi
 - **Iterative loop** (one-site-at-a-time) with rich logging and summaries.
 - Flexible **position selection**: all non-`X`, first-N, or user-defined indices.
 
-For training and dataset preparation, see: [link pending].
 
 ---
 
 # Pretrained Checkpoints
 
-- **Conditional model (FiLM)**: `runs_cond_film_token_item_split_v1/best.pt` — checkpoint trained with antigen pocket conditioning.  
-  Download: [link pending]
+- **Conditional model (FiLM)**: `runs_cond_film_token_item_split_v1/iMut-CDR-Epi.pt` — checkpoint trained with antigen pocket conditioning.  
+  [Download iMut-CDR-Epi.pt](https://huggingface.co/linbuliao/iMut-CDR/resolve/main/iMut-CDR-Epi.pt)
 - **ESM-2 (650M) weights**: local folder with model files from Hugging Face.  
   Model card: [facebook/esm2_t33_650M_UR50D](https://huggingface.co/facebook/esm2_t33_650M_UR50D)
   
